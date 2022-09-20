@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\{Person, Tenant};
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -21,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password', 100);
             $table->dateTime('archived_at')->nullable()->index();
-            $table->bigInteger('citie');
+            $table->unsignedBigInteger('city_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
