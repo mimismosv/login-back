@@ -1,10 +1,11 @@
 <?php
 
+use App\Models\{Person, Tenant};
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,12 +16,15 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
+            $table->string('username', 100)->unique();
+            $table->string('email', 100)->nullable()->index();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password', 100);
+            $table->dateTime('archived_at')->nullable()->index();
+            $table->bigInteger('citie');
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
