@@ -1,8 +1,10 @@
 <?php
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CityController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +28,15 @@ Route::name('api.')->group(function () {
         Route::controller(AuthController::class)->group(function () {
             Route::post('login', 'login')->name('login');
             Route::post('logout', 'logout')->name('logout');
+            //Route::apiResource('cities', CityController::class)->only(['index']);
         });
         #endregion
     });
+});
+
+
+Route::middleware(['auth:api'])->group(function () {
+    #region Cities
+    Route::apiResource('cities', CityController::class)->only(['index']);
+    #endregion
 });
