@@ -36,6 +36,7 @@ return [
     |
     */
 
+/* This is telling Laravel to use the JWT driver for the api guard. */
     'guards' => [
         'api' => [
             'driver'   => 'jwt',
@@ -60,6 +61,7 @@ return [
     |
     */
 
+/* This is telling Laravel to use the Eloquent driver for the users provider. */
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
@@ -87,6 +89,7 @@ return [
     |
     */
 
+/* This is the default password reset configuration. */
     'passwords' => [
         'users' => [
             'provider' => 'users',

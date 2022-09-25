@@ -11,6 +11,10 @@ return new class extends Migration
      *
      * @return void
      */
+/**
+ * Add a foreign key constraint to the users table that references the id column of the cities table,
+ * and set the value to null if the referenced row is deleted or updated.
+ */
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {

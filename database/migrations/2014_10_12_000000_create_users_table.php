@@ -11,6 +11,9 @@ class CreateUsersTable extends Migration
      *
      * @return void
      */
+/* Creating a table called users with the following columns:
+id, username, email, email_verified_at, password, archived_at, city_id, remember_token, created_at,
+updated_at, deleted_at */
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {

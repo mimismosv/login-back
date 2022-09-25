@@ -22,6 +22,10 @@ use Illuminate\Support\Facades\Route;
 
 
 
+/* Creating a route group with the prefix `api` and then another route group with the prefix `auth` and
+then it is creating a route group with the controller `AuthController` and then it is creating a
+route with the name `login` and the method `login` and then it is creating a route with the name
+`logout` and the method `logout`. */
 Route::name('api.')->group(function () {
     Route::name('auth.')->prefix('auth')->group(function () {
         #region Authentication
@@ -35,6 +39,12 @@ Route::name('api.')->group(function () {
 });
 
 
+/* Creating a route group with the middleware `auth:api` and then it is creating a route
+with the name `cities` and the method `index` and then it is creating a route with the name `cities`
+
+and the method `store` and then it is creating a route with the name `cities` and the method `show`
+and then it is creating a route with the name `cities` and the method `update` and then it is
+creating a route with the name `cities` and the method `destroy`. */
 Route::middleware(['auth:api'])->group(function () {
     #region Cities
     Route::apiResource('cities', CityController::class)->only(['index']);

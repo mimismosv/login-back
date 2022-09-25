@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+/* Creating 50 cities and 100 users. */
         \App\Models\City::factory(50)->create();
         \App\Models\User::factory(100)->create();
 

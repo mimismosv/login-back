@@ -8,6 +8,11 @@ use App\Models\City;
 
 class CityController extends Controller
 {
+/**
+ * It returns a collection of cities ordered by name in ascending order.
+ *
+ * @return A collection of cities.
+ */
     public function index()
     {
         return CityResource::collection(

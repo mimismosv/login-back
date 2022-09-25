@@ -6,6 +6,20 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateCitiesTable extends Migration
 {
+/**
+ * It creates a table called cities with the following columns:
+ * - id
+ * - name
+ * - latitude
+ * - longitude
+ * - state_name
+ * - state_code
+ * - country_code
+ * - timezone
+ * - created_at
+ * - updated_at
+ * - deleted_at
+ */
     public function up()
     {
         Schema::create('cities', function (Blueprint $table) {

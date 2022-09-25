@@ -11,6 +11,11 @@ return new class extends Migration
      *
      * @return void
      */
+/**
+ * The function creates a table called personal_access_tokens with the following columns: id,
+ * tokenable_id, tokenable_type, name, token, abilities, last_used_at, expires_at, created_at, and
+ * updated_at.
+ */
     public function up()
     {
         Schema::create('personal_access_tokens', function (Blueprint $table) {

@@ -17,6 +17,7 @@ class CityFactory extends Factory
     public function definition()
     {
         return [
+/* Creating a fake city with fake data. */
             'name' => fake()->city(),
             'latitude' => fake()->latitude($min = -90, $max = 90),
             'longitude' => fake()->longitude($min = -180, $max = 180),

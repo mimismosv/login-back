@@ -11,6 +11,13 @@ return new class extends Migration
      *
      * @return void
      */
+/**
+ * The function creates a table called password_resets with two columns: email and token.
+ *
+ * The email column is a string and is indexed. The token column is a string.
+ *
+ * The created_at column is a timestamp.
+ */
     public function up()
     {
         Schema::create('password_resets', function (Blueprint $table) {

@@ -12,6 +12,11 @@ use Symfony\Component\HttpFoundation\Response;
 
 class AuthController extends Controller
 {
+/**
+ * It takes the email and password from the request, validates them, and then attempts to authenticate
+ * the user. If the authentication fails, it returns a 401 response. If it succeeds, it returns a 200
+ * response with the user's token.
+ */
     public function login()
     {
         $validated = request()->validate([
@@ -30,6 +35,9 @@ class AuthController extends Controller
         return $this->respondWithToken($token);
     }
 
+/**
+ * It logs the user out
+ */
     public function logout()
     {
         auth()->logout();
@@ -37,6 +45,11 @@ class AuthController extends Controller
         return response()->json(['message' => 'Successfully logged out']);
     }
 
+/**
+ * It returns a JSON response with the access token, token type, and expiration time
+ *
+ * @param token The JWT token
+ */
     protected function respondWithToken($token)
     {
         return response()->json([
