@@ -1,4 +1,3 @@
-/* The PasswordResetRequestController class is responsible for sending a password reset email to a user */
 <?php
 
 namespace App\Http\Controllers;
