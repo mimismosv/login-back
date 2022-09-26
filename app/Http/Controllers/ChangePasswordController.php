@@ -70,6 +70,7 @@ class ChangePasswordController extends Controller
           $this->updatePasswordRow($request)->delete();
 
           // reset password response
+/* Returning a JSON response with a message that the password has been updated. */
           return response()->json([
             'data'=>'Password has been updated.'
           ],Response::HTTP_CREATED);
