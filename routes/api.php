@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PasswordResetRequestController;
+use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\CityController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,9 +34,25 @@ Route::name('api.')->group(function () {
         Route::controller(AuthController::class)->group(function () {
             Route::post('login', 'login')->name('login');
             Route::post('logout', 'logout')->name('logout');
-            //Route::apiResource('cities', CityController::class)->only(['index']);
         });
         #endregion
+
+/* Creating a route group with the controller `PasswordResetRequestController` and then it is creating
+a route with the name `forgot-password` and the method `sendEmail`. */
+        #region PasswordReset
+        Route::controller(PasswordResetRequestController::class)->group(function () {
+            Route::post('forgot-password', 'sendEmail')->name('forgot-password');
+        });
+        #endregion
+
+/* Creating a route group with the controller `ChangePasswordController` and then it is creating
+a route with the name `reset-Password` and the method `passwordResetProcess`. */
+        #region ChangePassword
+        Route::controller(ChangePasswordController::class)->group(function () {
+        Route::post('reset-Password', 'passwordResetProcess')->name('reset-Password');
+        });
+        #endregion
+
     });
 });
 
