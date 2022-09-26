@@ -1,5 +1,3 @@
-/* It verifies if the token is valid, updates the password, removes the verification data from the
-database, and returns a response */
 <?php
 
 namespace App\Http\Controllers;
