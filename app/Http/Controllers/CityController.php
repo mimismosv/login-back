@@ -15,10 +15,15 @@ class CityController extends Controller
  */
     public function index()
     {
+        /*
         return CityResource::collection(
             City::query()
                 ->orderBy('name', 'asc')
                 ->get()
-        );
+        );*/
+
+        $cities = City::query()->paginate();
+
+        return CityResource::collection($cities);
     }
 }
