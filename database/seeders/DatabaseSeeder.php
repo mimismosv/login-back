@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,12 +17,35 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 /* Creating 50 cities and 100 users. */
-        \App\Models\City::factory(50)->create();
-        \App\Models\User::factory(100)->create();
+        $this->call(RoleSeeder::class);
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+/* Creating a city with the given data. */
+        \App\Models\City::factory()->create([
+            'name' => 'Santa Ana',
+            'latitude' => 13.983333,
+            'longitude' => -89.533333,
+            'state_code' => 'SA',
+            'state_name' => 'Santa Ana',
+            'country_code' => 'SV',
+            'timezone' => 'America/El_Salvador',
+        ]);
+
+/* Creating a user with the given data and assigning it the role of Admin. */
+        \App\Models\User::factory()->create([
+            'username' => 'Oscar Ivan Cervantes Guevara',
+            'email' => 'oicguevara@gmail.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('password'),
+            'remember_token' => Str::random(10),
+            'city_id' => 1,
+        ])->assignRole('Admin');
+
+/* Creating 49 cities and 99 users. */
+        \App\Models\City::factory(49)->create();
+/* Creating 99 users and assigning them the role of User. */
+        \App\Models\User::factory(99)->create()->each(function ($user) {
+            $user->assignRole('User'); // assuming 'supscription' was a typo
+        });
+
     }
 }

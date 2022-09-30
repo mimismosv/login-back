@@ -55,6 +55,7 @@ Route::middleware([
     Route::middleware(['auth:api'])->group(function () {
         #region Cities
         Route::apiResource('cities', CityController::class)->only(['index']);
+        Route::apiResource('cities', CityController::class)->only(['store']);
         #endregion
     });
 
