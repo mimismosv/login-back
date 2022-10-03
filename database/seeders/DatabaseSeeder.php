@@ -17,7 +17,9 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 /* Creating 50 cities and 100 users. */
+        $this->call(RoleSeeder::class);
 
+/* Creating a city with the given data. */
         \App\Models\City::factory()->create([
             'name' => 'Santa Ana',
             'latitude' => 13.983333,
@@ -27,6 +29,8 @@ class DatabaseSeeder extends Seeder
             'country_code' => 'SV',
             'timezone' => 'America/El_Salvador',
         ]);
+
+/* Creating a user with the given data and assigning it the role of Admin. */
         \App\Models\User::factory()->create([
             'username' => 'Oscar Ivan Cervantes Guevara',
             'email' => 'oicguevara@gmail.com',
@@ -34,14 +38,14 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('password'),
             'remember_token' => Str::random(10),
             'city_id' => 1,
-        ]);
+        ])->assignRole('Admin');
 
+/* Creating 49 cities and 99 users. */
         \App\Models\City::factory(49)->create();
-        \App\Models\User::factory(99)->create();
+/* Creating 99 users and assigning them the role of User. */
+        \App\Models\User::factory(99)->create()->each(function ($user) {
+            $user->assignRole('User'); // assuming 'supscription' was a typo
+        });
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
     }
 }

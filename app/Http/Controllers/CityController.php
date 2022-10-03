@@ -9,6 +9,12 @@ use App\Models\City;
 
 class CityController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['can:cities.index'])->only('index');
+        $this->middleware(['can:cities.store'])->only('store');
+    }
+
     public function index()
     {
 /* Returning a collection of cities ordered by name in ascending order. */
