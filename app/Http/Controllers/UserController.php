@@ -3,8 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Database\Eloquent\{Builder, SoftDeletes};
+use Illuminate\Database\Eloquent\{SoftDeletes};
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
 
@@ -12,11 +11,7 @@ use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
 class User extends Authenticatable implements JWTSubject
 {
     use HasFactory;
-    use Notifiable;
-    use TenantConnection;
     use SoftDeletes;
-    use ArchivedRecords;
-    use CanResetPassword;
 
     protected $guarded = [
         'id',
@@ -33,21 +28,11 @@ class User extends Authenticatable implements JWTSubject
         'email_verified_at' => 'datetime',
     ];
 
-/**
- * It returns the primary key of the user.
- *
- * @return The primary key of the user.
- */
     public function getJWTIdentifier()
     {
         return $this->getKey();
     }
 
-/**
- * > This function is used to add additional claims to the JWT
- *
- * @return An array of custom claims to be added to the JWT.
- */
     public function getJWTCustomClaims()
     {
         return [];

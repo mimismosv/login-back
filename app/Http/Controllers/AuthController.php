@@ -1,11 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
-
 use App\Http\Controllers\Controller;
-use App\Models\{User};
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\{DB, Hash, Password};
 use Illuminate\Support\{Carbon, Str};
 use Symfony\Component\HttpFoundation\Response;
@@ -30,28 +26,20 @@ class AuthController extends Controller
             return response()->json(['message' => 'Sorry, the email or password is incorrect.'], Response::HTTP_UNAUTHORIZED);
         }
 
-       // event(new UserLoginEvent(auth()->user()));
-
         return $this->respondWithToken($token);
     }
 
-/**
- * It logs the user out
- */
     public function logout()
     {
+/* Logging the user out. */
         auth()->logout();
-
         return response()->json(['message' => 'Successfully logged out']);
     }
 
-/**
- * It returns a JSON response with the access token, token type, and expiration time
- *
- * @param token The JWT token
- */
+
     protected function respondWithToken($token)
     {
+/* Returning the token to the user. */
         return response()->json([
             'access_token' => $token,
             'token_type'   => 'bearer',

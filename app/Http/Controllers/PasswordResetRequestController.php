@@ -59,16 +59,6 @@ class PasswordResetRequestController extends Controller
         return !!User::where('email', $email)->first();
     }
 
-/**
- * It returns a JSON response with a 404 status code and an error message
- *
- * @return public function failedResponse()
- *     {
- *         return response()->json([
- *             'error' => 'Email does\'t found on our database'
- *         ], Response::HTTP_NOT_FOUND);
- *     }
- */
     public function failedResponse()
     {
         return response()->json([
@@ -76,13 +66,6 @@ class PasswordResetRequestController extends Controller
         ], Response::HTTP_NOT_FOUND);
     }
 
-/**
- * It returns a JSON response with a message that the reset email is sent successfully
- *
- * @return public function sendResetLinkEmail(Request )
- *     {
- *         ->validateEmail();
- */
     public function successResponse()
     {
         return response()->json([

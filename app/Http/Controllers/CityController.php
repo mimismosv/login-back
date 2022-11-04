@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Http\Controllers\Controller;
 use App\Http\Resources\CityResource;
 use App\Http\Requests\City\CityRequest;
