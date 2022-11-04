@@ -13,6 +13,8 @@ class CityController extends Controller
         $this->middleware(['can:cities.index'])->only('index');
         $this->middleware(['can:cities.store'])->only('store');
         $this->middleware(['can:cities.show'])->only('show');
+        $this->middleware(['can:cities.update'])->only('update');
+        $this->middleware(['can:cities.destroy'])->only('destroy');
     }
 
     public function index()
