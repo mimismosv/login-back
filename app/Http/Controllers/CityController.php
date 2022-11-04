@@ -59,4 +59,14 @@ class CityController extends Controller
 
     }
 
+    public function destroy(city $city)
+    {
+        $city->delete();
+        return response()->json([
+            "success" => true,
+            "message" => "City deleted successfully.",
+            "data" => $city
+]);
+}
+
 }

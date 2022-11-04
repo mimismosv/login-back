@@ -27,6 +27,7 @@ class RoleSeeder extends Seeder
         $permission2 = Permission::create(['name' => 'cities.store'])->syncRoles([$role1]);
         $permission3 = Permission::create(['name' => 'cities.show'])->syncRoles([$role1,$role2]);
         $permission4 = Permission::create(['name' => 'cities.update'])->syncRoles([$role1]);
+        $permission5 = Permission::create(['name' => 'cities.destroy'])->syncRoles([$role1]);
 
 
     }
