@@ -32,12 +32,17 @@ class DatabaseSeeder extends Seeder
 
 /* Creating a user with the given data and assigning it the role of Admin. */
         \App\Models\User::factory()->create([
-            'username' => 'Oscar Ivan Cervantes Guevara',
+            'username' => 'oscar.guevara',
             'email' => 'oicguevara@gmail.com',
             'email_verified_at' => now(),
             'password' => Hash::make('password'),
             'remember_token' => Str::random(10),
             'city_id' => 1,
+            'first_name' =>'Oscar',
+            'middle_name' =>'Ivan',
+            'last_name' =>'Cervantes Guevara',
+            'intro' =>'Ing',
+            'profile' =>fake()->text($maxNbChars = 200),
         ])->assignRole('Admin');
 
 /* Creating 49 cities and 99 users. */

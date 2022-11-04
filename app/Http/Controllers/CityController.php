@@ -13,6 +13,7 @@ class CityController extends Controller
     {
         $this->middleware(['can:cities.index'])->only('index');
         $this->middleware(['can:cities.store'])->only('store');
+        $this->middleware(['can:cities.show'])->only('show');
     }
 
     public function index()
@@ -28,13 +29,20 @@ class CityController extends Controller
         return CityResource::make($cities);
     }
 
-    /*
-    public function store(TreatmentPlanCategoryRequest $request)
+    public function show($id)
     {
-        $treatmentPlanCategory = TreatmentPlanCategory::create($request->all());
-
-        return TreatmentPlanCategoryResource::make($treatmentPlanCategory);
+    $cities = City::find($id);
+    if (is_null($cities)) {
+        return response()->json([
+            "data" => 'City Not found'
+        ]);
+    } else {
+        return response()->json([
+            "data" => $cities
+        ]);
     }
-    */
+
+}
+
 
 }
