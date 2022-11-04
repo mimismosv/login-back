@@ -9,8 +9,8 @@ class CityRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'latitude' => 'required',
-            'longitude' => 'required',
+            'latitude' => 'required|numeric',
+            'longitude' => 'required|numeric',
             'state_name' => 'required|string|max:255',
             'state_code' => 'required|string|max:255',
             'country_code' => 'required|string|max:2',

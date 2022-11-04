@@ -30,18 +30,33 @@ class CityController extends Controller
 
     public function show($id)
     {
-    $cities = City::find($id);
-    if (is_null($cities)) {
-        return response()->json([
-            "data" => 'City Not found'
-        ]);
-    } else {
-        return response()->json([
-            "data" => $cities
-        ]);
+        $cities = City::find($id);
+        if (is_null($cities)) {
+            return response()->json([
+                "data" => 'City Not found'
+            ]);
+        } else {
+            return response()->json([
+                "data" => $cities
+            ]);
+        }
     }
 
-}
+    public function update(CityRequest $request, city $city)
+    {
+        $input = $request->all();
+        $city->name  = $input['name'];
+        $city->latitude = $input['latitude'];
+        $city->longitude = $input['longitude'];
+        $city->state_name = $input['state_name'];
+        $city->state_code = $input['state_code'];
+        $city->country_code = $input['country_code'];
+        $city->timezone = $input['timezone'];
+        $city->save();
+        return response()->json([
+            "data" => $city
+        ]);
 
+    }
 
 }

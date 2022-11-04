@@ -62,6 +62,7 @@ Route::middleware([
         Route::apiResource('cities', CityController::class)->only(['index']);
         Route::apiResource('cities', CityController::class)->only(['store']);
         Route::apiResource('cities', CityController::class)->only(['show']);
+        Route::apiResource('cities', CityController::class)->only(['update']);
         #endregion
     });
 
