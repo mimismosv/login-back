@@ -8,11 +8,11 @@ use Symfony\Component\HttpFoundation\Response;
 
 class AuthController extends Controller
 {
-/**
- * It takes the email and password from the request, validates them, and then attempts to authenticate
- * the user. If the authentication fails, it returns a 401 response. If it succeeds, it returns a 200
- * response with the user's token.
- */
+    /**
+     * It takes the email and password from the request, validates them, and then attempts to authenticate
+     * the user. If the authentication fails, it returns a 401 response. If it succeeds, it returns a 200
+     * response with the user's token.
+     */
     public function login()
     {
         $validated = request()->validate([
@@ -31,15 +31,19 @@ class AuthController extends Controller
 
     public function logout()
     {
-/* Logging the user out. */
+    /* Logging the user out. */
         auth()->logout();
         return response()->json(['message' => 'Successfully logged out']);
     }
 
+    public function userProfile()
+    {
+        return response()->json(auth()->user());
+    }
 
     protected function respondWithToken($token)
     {
-/* Returning the token to the user. */
+    /* Returning the token to the user. */
         return response()->json([
             'access_token' => $token,
             'token_type'   => 'bearer',

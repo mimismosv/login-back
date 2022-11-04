@@ -36,9 +36,14 @@ Route::middleware([
             #region Authentication
             Route::controller(AuthController::class)->group(function () {
                 Route::post('login', 'login')->name('login');
-                Route::post('logout', 'logout')->name('logout');
+                //Route::post('logout', 'logout')->name('logout');
             });
             #endregion
+            Route::middleware('auth:api')->group(function () {
+                Route::get('user-profile', [AuthController::class, 'userProfile']);
+                Route::post('logout', [AuthController::class, 'logout']);
+            });
+
             #region PasswordReset
             Route::controller(PasswordResetRequestController::class)->group(function () {
                 Route::post('forgot-password', 'sendEmail')->name('forgot-password');
