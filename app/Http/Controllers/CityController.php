@@ -27,7 +27,10 @@ class CityController extends Controller
     public function store(CityRequest $request)
     {
         $cities = City::create($request->all());
-        return CityResource::make($cities);
+        //return CityResource::make($cities);
+        return response()->json([
+            "data" => 'City create successfully'
+        ]);
     }
 
     public function show($id)
@@ -56,7 +59,8 @@ class CityController extends Controller
         $city->timezone = $input['timezone'];
         $city->save();
         return response()->json([
-            "data" => $city
+            "message" => "City update successfully.",
+            //"data" => $city
         ]);
 
     }
@@ -65,9 +69,9 @@ class CityController extends Controller
     {
         $city->delete();
         return response()->json([
-            "success" => true,
+            //"success" => true,
             "message" => "City deleted successfully.",
-            "data" => $city
+            //"data" => $city
 ]);
 }
 
