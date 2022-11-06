@@ -39,4 +39,9 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+
+    // relacion con tabla task
+    public function tasks(){
+        return $this->hasMany('\App\Models\Task');
+    }
 }

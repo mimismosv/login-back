@@ -51,6 +51,6 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory(99)->create()->each(function ($user) {
             $user->assignRole('User'); // assuming 'supscription' was a typo
         });
-
+        \App\Models\Task::factory(1000)->create();
     }
 }
