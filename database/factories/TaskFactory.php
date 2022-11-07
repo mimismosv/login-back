@@ -25,11 +25,9 @@ class TaskFactory extends Factory
             'description' => fake()->text($maxNbChars = 500),          //` VARCHAR(2048) DEFAULT NULL,
             'status' => fake()->numberBetween($min = 1, $max = 3),         //` SMALLINT NOT NULL DEFAULT 0,
             'hours' => fake()->numberBetween($min = 1, $max = 24),         //` FLOAT NOT NULL DEFAULT 0,
-            'planned_start_date' => fake()->dateTime($max = 'now', $timezone = null),         //` DATETIME NULL DEFAULT NULL,
-            'planned_end_date' => fake()->dateTime($max = 'now', $timezone = null),         //` DATETIME NULL DEFAULT NULL,
-            'actual_start_date' => fake()->dateTime($max = 'now', $timezone = null),         //` DATETIME NULL DEFAULT NULL,
-            'actual_end_date' => fake()->dateTime($max = 'now', $timezone = null),         //` DATETIME NULL DEFAULT NULL,
-            'content' => fake()->text($maxNbChars = 248),         //` TEXT NULL DEFAULT NULL,
+            'planned_start_date' => fake()->dateTimeBetween($startDate = '-1 year', $endDate = 'now', $timezone = null),         //` DATETIME NULL DEFAULT NULL,
+            'planned_end_date' => fake()->dateTimeBetween($startDate = 'now', $endDate = '1 year', $timezone = null),         //` DATETIME NULL DEFAULT NULL,
+            'content' => fake()->text($maxNbChars = 756),         //` TEXT NULL DEFAULT NULL,
         ];
     }
 }
